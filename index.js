@@ -8,6 +8,7 @@ import { Login } from './Routes/Login.js';
 import { Dashboard } from './Routes/Dashboard.js';
 import { isSignIn } from './Authorization/Authorization.js';
 import {  Restaurants } from './Routes/Restaurants.js';
+import { Forgotpassword } from './Routes/Forgotpass.js';
 
 dotenv.config();
 const app = express();
@@ -23,8 +24,9 @@ app.use(express.json());
 app.use(cors());
 app.use('/', signup )
 app.use('/', Login)
-app.use('/',isSignIn, Dashboard)
-app.use('/',isSignIn, Restaurants)
+app.use('/home',isSignIn, Dashboard)
+app.use('/home',isSignIn, Restaurants)
+app.use('/', Forgotpassword)
 
 app.get('/', (req, res)=>{
     res.status(200).json(`Hey Your Server is listening on ${PORT}`)
